@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package io.esev.grpc;
+
+option java_multiple_files = true;
+
+message EchoRequest {
+    string message = 1;
+}
+message EchoResponse {
+    string message = 1;
+}
+
+service ErrorService {
+    rpc notImplemented(EchoRequest) returns (EchoResponse);
+    rpc customUnwrapException(EchoRequest) returns (EchoResponse);
+    rpc customException(EchoRequest) returns (EchoResponse);
+    rpc uncaughtException(EchoRequest) returns (EchoResponse);
+    rpc deadLineExceeded(EchoRequest) returns (EchoResponse);
+    rpc automaticallyWrappedException(EchoRequest) returns (EchoResponse);
+}
